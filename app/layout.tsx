@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Lucio Andres',
   description: 'Frontend Web Developer Portfolio ',
   generator: 'Lucio Andres',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
