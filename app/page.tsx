@@ -46,18 +46,22 @@ export default function Portfolio() {
               I craft exceptional digital experiences with code, creativity, and a passion for innovation.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button className="relative overflow-hidden group bg-gradient-to-r from-blue-500 to-cyan-600 border-0">
-                <span className="relative z-10 flex items-center">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              </Button>
-              <Button
-                variant="outline"
-                className="bg-zinc-800 hover:bg-zinc-700 text-white border-0 hover:text-white"
-              >
-                Contact Me
-              </Button>
+              <Link href="#projects">
+                <Button className="relative overflow-hidden group bg-gradient-to-r from-blue-500 to-cyan-600 border-0">
+                  <span className="relative z-10 flex items-center">
+                    View Projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </Button>
+              </Link>
+              <Link href="#contact">
+                <Button
+                  variant="outline"
+                  className="bg-zinc-800 hover:bg-zinc-700 text-white border-0 hover:text-white"
+                >
+                  Contact Me
+                </Button>
+              </Link>
             </div>
             <div className="flex gap-4 pt-4">
               <Link href="https://github.com" target="_blank" rel="noopener noreferrer">

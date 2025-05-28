@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Send } from "lucide-react"
 
@@ -14,21 +14,58 @@ import { useToast } from "@/hooks/use-toast"
 export function ContactForm() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    }
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-    setIsSubmitting(false)
-    e.currentTarget.reset()
+      const result = await response.json()
+
+      if (!response.ok || result.error) {
+        throw new Error(result.error || 'Failed to send message')
+      }
+
+      // Reset form first
+      if (formRef.current) {
+        formRef.current.reset()
+      }
+
+      // Then show success message
+      toast({
+        title: "¡Mensaje enviado!",
+        description: "Gracias por contactarme. Te responderé pronto.",
+        duration: 5000, // Show for 5 seconds
+      })
+
+    } catch (error) {
+      console.error('Error sending message:', error)
+      toast({
+        title: "Error",
+        description: "No se pudo enviar el mensaje. Por favor, intenta de nuevo más tarde.",
+        variant: "destructive",
+        duration: 5000,
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -44,9 +81,10 @@ export function ContactForm() {
         <div className="relative">
           <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Input
+                name="name"
                 placeholder="Your Name"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-blue-500 focus:ring-blue-500/20"
@@ -54,6 +92,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Input
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 required
@@ -62,6 +101,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Input
+                name="subject"
                 placeholder="Subject"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-blue-500 focus:ring-blue-500/20"
@@ -69,6 +109,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Textarea
+                name="message"
                 placeholder="Your Message"
                 rows={5}
                 required
