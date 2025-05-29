@@ -30,8 +30,8 @@ export default function Portfolio() {
 
         <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="inline-block">
-              <div className="relative px-3 py-1 text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
+            <div className="inline-block mt-8 sm:mt-0">
+              <div className="relative px-3 py-1 text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 sm:px-3 sm:py-1 px-4 py-2">
                 <span className="relative z-10">Frontend Developer</span>
                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 animate-pulse"></span>
               </div>
@@ -64,7 +64,7 @@ export default function Portfolio() {
               </Link>
             </div>
             <div className="flex gap-4 pt-4">
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://github.com/luciomrod" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -74,7 +74,7 @@ export default function Portfolio() {
                   <span className="sr-only">GitHub</span>
                 </Button>
               </Link>
-              <Link href="https://www.linkedin.com/in/shinekyawkyawaung/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.linkedin.com/in/lucioandresmr/" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -104,6 +104,92 @@ export default function Portfolio() {
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center items-start p-1">
             <div className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+            {/* Projects Section */}
+            <section id="projects" className="py-32 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <SectionHeading title="Featured Projects" subtitle="Some of my recent work" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            <ProjectCard
+              title="Car Dealership Landing Page"
+              description="A full-stack landing page using Next.js, TypeScript, and the ShadCN component library."
+              tags={["Next.js", "TypeScript", "shadCn", "Tailwind CSS"]}
+              image="/maf.jpg"
+              demoUrl="https://autosmaf.vercel.app/"
+              repoUrl="https://github.com/luciomrod/autosmaf"
+            />
+            <ProjectCard
+              title="Municipality Website"
+              description="A responsive Municipality of La Granja website with dashboard and user management, including authentication and authorization."
+              tags={["React", "Express", "Node.js", "Redux"]}
+              image="/lagranja.jpg"
+              demoUrl="https://www.lagranja.gob.ar/"
+              repoUrl="https://github.com/luciomrod"
+            />
+            <ProjectCard
+              title="Music Events Landing Page"
+              description="Landing page for Paredon Techno with a gallery of past events, and cards of upcoming events."
+              tags={["Next.js", "Typescript", "shadCn"]}
+              image="/paredon.jpg"
+              demoUrl="https://paredon-techno.vercel.app/"
+              repoUrl="https://github.com/luciomrod/paredon-landing"
+            />
+            <ProjectCard
+              title="Portfolio Website"
+              description="This portfolio website built with Next.js and Tailwind CSS."
+              tags={["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"]}
+              image="/portfolio.jpg"
+              demoUrl="https://example.com"
+              repoUrl="https://github.com"
+            />
+          </div>
+        </div>
+      </section>
+
+            {/* Skills Section */}
+            <section id="skills" className="py-32 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <SectionHeading title="My Skills" subtitle="Technologies I work with" />
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-16">
+            <SkillBadge name="JavaScript" level={100} />
+            <SkillBadge name="TypeScript" level={100} />
+            <SkillBadge name="React" level={100} />
+            <SkillBadge name="Next.js" level={100} />
+            <SkillBadge name="Node.js" level={100} />
+            <SkillBadge name="HTML/CSS" level={100} />
+            <SkillBadge name="Tailwind CSS" level={100} />
+            <SkillBadge name="Git" level={100} />
+          </div>
+        </div>
+      </section>
+
+            {/* Experience Section */}
+            <section id="experience" className="py-32 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <SectionHeading title="Work Experience" subtitle="My professional journey" />
+
+          <div className="mt-16">
+            <Timeline />
           </div>
         </div>
       </section>
@@ -157,7 +243,7 @@ export default function Portfolio() {
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Email</div>
-                    <div className="font-medium">luciomedinawork@gmail.com</div>
+                    <div className="font-medium break-all">luciomedinawork@gmail.com</div>
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Location</div>
@@ -185,91 +271,9 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-32 relative">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        </div>
 
-        <div className="container relative z-10">
-          <SectionHeading title="My Skills" subtitle="Technologies I work with" />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-16">
-            <SkillBadge name="JavaScript" level={90} />
-            <SkillBadge name="TypeScript" level={85} />
-            <SkillBadge name="React" level={95} />
-            <SkillBadge name="Next.js" level={90} />
-            <SkillBadge name="Node.js" level={80} />
-            <SkillBadge name="HTML/CSS" level={95} />
-            <SkillBadge name="Tailwind CSS" level={90} />
-            <SkillBadge name="Git" level={85} />
-          </div>
-        </div>
-      </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-32 relative">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <SectionHeading title="Featured Projects" subtitle="Some of my recent work" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-            <ProjectCard
-              title="Car Dealership Landing Page"
-              description="A full-stack landing page using Next.js, TypeScript, and the ShadCN component library."
-              tags={["Next.js", "TypeScript", "shadCn", "Tailwind CSS"]}
-              image="/maf.jpg"
-              demoUrl="https://autosmaf.vercel.app/"
-              repoUrl="https://github.com/luciomrod/autosmaf"
-            />
-            <ProjectCard
-              title="Municipality Website"
-              description="A responsive Municipality of La Granja website with dashboard and user management, including authentication and authorization."
-              tags={["React", "Express", "Node.js", "Redux"]}
-              image="/lagranja.jpg"
-              demoUrl="https://www.lagranja.gob.ar/"
-              repoUrl="https://github.com/luciomrod"
-            />
-            <ProjectCard
-              title="Music Events Landing Page"
-              description="Landing page for Paredon Techno with a gallery of past events, and cards of upcoming events."
-              tags={["Next.js", "Typescript", "shadCn"]}
-              image="/paredon.jpg"
-              demoUrl="https://paredon-techno.vercel.app/"
-              repoUrl="https://github.com/luciomrod/paredon-landing"
-            />
-            <ProjectCard
-              title="Portfolio Website"
-              description="This portfolio website built with Next.js and Tailwind CSS."
-              tags={["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"]}
-              image="/portfolio.jpg"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-32 relative">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <SectionHeading title="Work Experience" subtitle="My professional journey" />
-
-          <div className="mt-16">
-            <Timeline />
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-32 relative">
